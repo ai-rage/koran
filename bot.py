@@ -1,12 +1,23 @@
-# -*- coding: utf-8 -*-
-import config
-import telebot
+import requests
+import configurations
 
-bot = telebot.TeleBot(config.token)
+def point(event, context):
+	print(event)
+	
+	message_text = event["message"]["text"]
+	chat_id = event["message"]["chat"]["id"]
 
-@bot.message_handler(content_types=["text"])
-def repeat_all_messages(message):
-    bot.send_message(message.chat.id, message.text)
+	text = "Бот готов"
+	send_message(chat_id, text)
 
-if __name__ == '__main__':
-     bot.polling(none_stop=True)
+def send_message(chat_id, text):
+	url = "https://api.telegram.org/bot{token}/{method}".format(
+		token = configurations.token,
+		method = "sendMessage"
+	)
+	data = {
+		"chat_id": chat_id,
+		"text": text
+	}
+	r = requests.post(url, data = data)
+	print(r.json())

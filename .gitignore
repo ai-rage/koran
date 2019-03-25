@@ -1,0 +1,13 @@
+bin/
+certifi-2019.3.9.dist-info/
+certifi/
+chardet-3.0.4.dist-info/
+chardet/
+idna-2.8.dist-info/
+idna/
+requests-2.21.0.dist-info/
+requests/
+urllib3-1.24.1.dist-info/
+urllib3/
+
+configurations.py
